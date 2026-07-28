@@ -45,6 +45,24 @@ app.get('/demo', (req, res) => {
         subtitle: 'Your AI assistant — answering patient questions 24/7',
         q1: 'Are you taking new patients?',
         q2: 'Do you do emergency appointments?'
+      },
+      4: {
+        name: 'Cavendish Dental Care',
+        subtitle: 'Your AI assistant — answering patient questions 24/7',
+        q1: 'Are you taking new patients?',
+        q2: 'Do you help nervous patients?'
+      },
+      5: {
+        name: 'Charming Smiles',
+        subtitle: 'Your AI assistant — answering patient questions 24/7',
+        q1: 'Are you taking new patients?',
+        q2: 'Do you do teeth whitening?'
+      },
+      6: {
+        name: 'Castle Donington Dental Care',
+        subtitle: 'Your AI assistant — answering patient questions 24/7',
+        q1: 'Are you taking new patients?',
+        q2: 'Do you do dental implants?'
       }
     };
     const client = clients[businessId];
