@@ -154,6 +154,26 @@ if (cdFaqCount === 0) {
   insertCd.run('How do I contact you or book? What is your phone number or email?', 'You can call us on 01332 810233 or email info@castledoningtondental.co.uk. You can also leave your name and email here and our team will get back to you.');
 }
 
+// Seed Pride Plumbing Services (ID 7)
+const ppCount = db.prepare('SELECT COUNT(*) AS c FROM businesses WHERE id = 7').get().c;
+if (ppCount === 0) {
+  db.prepare("INSERT INTO businesses (id, name, email, password_hash) VALUES (7, 'Pride Plumbing Services', 'info@prideplumbingservices.co.uk', '')").run();
+}
+const ppFaqCount = db.prepare('SELECT COUNT(*) AS c FROM faqs WHERE business_id = 7').get().c;
+if (ppFaqCount === 0) {
+  const insertPp = db.prepare('INSERT INTO faqs (business_id, question, answer) VALUES (7, ?, ?)');
+  insertPp.run('Do you do emergency callouts? I have a leak, burst pipe or no heating', 'Yes, we handle plumbing and heating emergencies like leaks, burst pipes, boiler breakdowns and no heating or hot water, and we aim to get to you as quickly as possible. For an urgent callout please call us on 01332 367070, or pop your name and email below and leave your details and we will get straight back to you.');
+  insertPp.run('Do you install boilers? Do you do Gas or LPG boilers?', 'Yes! Our Gas Safe registered installers fit Gas and LPG boilers, including Vaillant boilers which come with a 10-year manufacturer warranty, tailored to your needs. Pop your name and email below and leave your details and we will get straight back to you to arrange a free quote.');
+  insertPp.run('Do you service boilers or do gas safety certificates? I am a landlord', 'Yes, we service boilers, fires and unvented water cylinders on all makes and models, and provide Gas Safety Certificates for both landlords and homeowners. Leave your name and email below and we will get straight back to you to book you in.');
+  insertPp.run('Do you fit bathrooms? Do you do bathroom design and installation?', 'Yes! We offer complete bathroom design and installation and will work with you every step of the way to bring your dream bathroom to life. Pop your name and email below and leave your details and we will get straight back to you to arrange a quote.');
+  insertPp.run('Do you fit radiators, towel rails, pumps or valves?', 'Yes, we fit new and designer radiators, towel rails, pumps and motorised valves. Leave your name and email below and we will get straight back to you to arrange a quote.');
+  insertPp.run('Can you find a fault or fix a breakdown or repair? My boiler or heating is not working', 'Yes, our engineers are trained to identify and fix faults with boilers, heating and plumbing systems. Please call us on 01332 367070 for anything urgent, or pop your name and email below and leave your details and we will get straight back to you.');
+  insertPp.run('Do you do general plumbing? Taps, toilets, leaks, wastes - no job too small?', 'Absolutely - no job too small! We handle replacement toilet parts, taps, leaks on pipework, float valves, and bath and basin wastes. Pop your name and email below and leave your details and we will get straight back to you.');
+  insertPp.run('Can I get a quote? How much will it cost?', 'We would be happy to give you a quote. Pop your name and email below and leave your details, and we will get straight back to you to arrange a free, no-obligation quote for your job.');
+  insertPp.run('What areas do you cover? Do you cover Derby?', 'We are based in Derby and cover Derby and the surrounding areas. If you are unsure whether we cover your area, leave your name and email below and we will get straight back to you.');
+  insertPp.run('How do I contact you or book? What is your phone number or address?', 'You can call us on 01332 367070, or find us at Pride Place, Caesar Street, Derby DE1 3RU. You can also leave your name and email here and we will get straight back to you.');
+}
+
 /**
  * Executes a SQL statement against the local SQLite database.
  * SELECT statements return an array of rows; other statements return an empty array.
