@@ -31,6 +31,12 @@ app.get('/demo', (req, res) => {
   let html = DEMO_TEMPLATE.replace(/const backendUrl = 'http:\/\/localhost:3001';/g, "const backendUrl = '" + BASE_URL + "';");
   html = html.replace(/const businessId = 1;/g, 'const businessId = ' + businessId + ';');
 
+  // Replify's own demo (business 1) — named assistant Robbie
+  if (businessId === 1) {
+    html = html.replace('<h3>Replify Assistant</h3>', '<h3>Robbie</h3>');
+    html = html.replace('Hi there! 👋 Ask me anything about this business — opening hours, prices, services, and more.', 'Hi, I\'m Robbie! 👋 Ask me anything about Replify — what I do, pricing, how I work, and more.');
+  }
+
   // Client-branded version (any business other than the Replify demo)
   if (businessId !== 1) {
     const clients = {
