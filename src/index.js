@@ -63,6 +63,12 @@ app.get('/demo', (req, res) => {
         subtitle: 'Your AI assistant — answering patient questions 24/7',
         q1: 'Are you taking new patients?',
         q2: 'Do you do dental implants?'
+      },
+      7: {
+        name: 'Pride Plumbing Services',
+        subtitle: 'Your AI assistant — answering customer questions 24/7',
+        q1: 'Do you do emergency callouts?',
+        q2: 'Can I get a quote?'
       }
     };
     const client = clients[businessId];
