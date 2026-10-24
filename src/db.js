@@ -38,16 +38,16 @@ CREATE TABLE IF NOT EXISTS leads (
 // Seed demo business (ID 1)
 const businessCount = db.prepare('SELECT COUNT(*) AS c FROM businesses').get().c;
 if (businessCount === 0) {
-  db.prepare("INSERT INTO businesses (id, name, email, password_hash) VALUES (1, 'Replify Demo Business', 'demo@replify.uk', '')").run();
+  db.prepare("INSERT INTO businesses (id, name, email, password_hash) VALUES (1, 'Glikify', 'demo@glikify.com', '')").run();
 }
 const faqCount = db.prepare('SELECT COUNT(*) AS c FROM faqs WHERE business_id = 1').get().c;
 if (faqCount === 0) {
   const insertFaq = db.prepare('INSERT INTO faqs (business_id, question, answer) VALUES (1, ?, ?)');
   insertFaq.run('What are your opening hours?', 'We are open Monday to Friday 9am to 5pm, and Saturday 10am to 2pm. Closed Sundays.');
   insertFaq.run('What services do you offer?', 'We offer AI-powered customer service chatbots for small businesses, including setup, FAQ training, and ongoing support.');
-  insertFaq.run('How much does it cost? What are your prices?', 'Replify costs 200 pounds per month plus a 495 pound one-off setup fee, with a free 30-day trial. Half-price setup for our first 3 founding clients!');
+  insertFaq.run('How much does it cost? What are your prices?', 'Glikify costs 200 pounds per month plus a 495 pound one-off setup fee, with a free 30-day trial. Half-price setup for our first 3 founding clients!');
   insertFaq.run('Where are you located? What is your address?', 'We are based in Derby, UK, and work with local small businesses across the area.');
-  insertFaq.run('How do I contact you? What is your phone number or email?', 'You can reach us at hello.replify.uk@gmail.com and we will get back to you within one working day.');
+  insertFaq.run('How do I contact you? What is your phone number or email?', 'You can reach us at hello.glikify@gmail.com and we will get back to you within one working day.');
 }
 
 // Seed Stable View cafe (ID 2)
