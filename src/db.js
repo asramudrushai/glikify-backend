@@ -40,14 +40,28 @@ const businessCount = db.prepare('SELECT COUNT(*) AS c FROM businesses').get().c
 if (businessCount === 0) {
   db.prepare("INSERT INTO businesses (id, name, email, password_hash) VALUES (1, 'Glikify', 'demo@glikify.com', '')").run();
 }
-const faqCount = db.prepare('SELECT COUNT(*) AS c FROM faqs WHERE business_id = 1').get().c;
-if (faqCount === 0) {
+// Glikify's own FAQs (business 1): reloaded on every start so changes always take effect
+db.prepare('DELETE FROM faqs WHERE business_id = 1').run();
+db.prepare("UPDATE businesses SET name = 'Glikify', email = 'demo@glikify.com' WHERE id = 1").run();
+{
   const insertFaq = db.prepare('INSERT INTO faqs (business_id, question, answer) VALUES (1, ?, ?)');
-  insertFaq.run('What are your opening hours?', 'We are open Monday to Friday 9am to 5pm, and Saturday 10am to 2pm. Closed Sundays.');
-  insertFaq.run('What services do you offer?', 'We offer AI-powered customer service chatbots for small businesses, including setup, FAQ training, and ongoing support.');
-  insertFaq.run('How much does it cost? What are your prices?', 'Glikify costs 200 pounds per month plus a 495 pound one-off setup fee, with a free 30-day trial. Half-price setup for our first 3 founding clients!');
-  insertFaq.run('Where are you located? What is your address?', 'We are based in Derby, UK, and work with local small businesses across the area.');
-  insertFaq.run('How do I contact you? What is your phone number or email?', 'You can reach us at hello.glikify@gmail.com and we will get back to you within one working day.');
+  insertFaq.run('Why called name named meaning mean who is gilly', 'I\'m Gilly, Glikify\'s own assistant. I answer questions about Glikify day or night, just like your own assistant would for your customers.');
+  insertFaq.run('How long take takes time timescale quick quickly live ready weeks days', 'It depends on your business. Once Sara has seen your website, she\'ll let you know how soon your assistant can be live. Leave your details and she\'ll be in touch.');
+  insertFaq.run('Price prices cost costs much pay fee fees monthly month setup pricing expensive charge', 'Glikify is 200 pounds a month plus a 495 pound one-off setup fee, and every business gets a free 30-day trial. Our first 3 founding clients get half-price setup.');
+  insertFaq.run('Free trial try test demo before buying', 'Yes! Every business gets a free 30-day trial. Sara can also build you a free demo using your own website, so you can see it working first. Leave your details and she\'ll get started.');
+  insertFaq.run('Founding offer discount deal half price cheaper special', 'Our first 3 founding clients get half-price setup: 247.50 pounds instead of 495. In return we ask for an honest review once your assistant has been running for a while.');
+  insertFaq.run('Contract cancel cancellation stop leave tied commitment notice', 'There\'s no contract. You pay monthly and can cancel any time.');
+  insertFaq.run('Opening hours open times available reply respond weekend', 'I\'m here 24/7 to answer questions. Sara reads every enquiry and replies within one working day.');
+  insertFaq.run('Glikify services offer chatbot chatbots assistant explain help', 'Glikify puts a friendly AI assistant on your website. It answers your customers\' questions in your own words, day or night, and when someone wants a quote or a booking it takes their details and sends them straight to you.');
+  insertFaq.run('Technical install code setup set up computer skills difficult easy', 'No technical skills needed. Sara builds your assistant, checks every answer with you and adds it to your website for you. You just read the enquiries that come in.');
+  insertFaq.run('Website wordpress wix squarespace shopify site existing compatible', 'It works on most websites. Sara checks yours first and adds it for you, so there\'s nothing for you to do.');
+  insertFaq.run('Leads enquiries enquiry details customers customer messages capture missed', 'When a customer wants a quote, a booking or a callback, I take their name and email and send them straight to your inbox, so no enquiry gets missed.');
+  insertFaq.run('Emergency emergencies urgent burst leak boiler callout', 'For emergencies, your assistant can give your phone number straight away, so urgent jobs reach you fast. Everything else gets their details taken for a callback.');
+  insertFaq.run('Businesses business suit suitable plumbers trades dentists cafes salons industries electricians garage', 'Glikify suits small businesses that can\'t always answer the phone: plumbers and trades, dentists, cafes, salons, car dealers, estate agents and local services.');
+  insertFaq.run('Answers words customise custom change update brand branding assistant called my business', 'Your assistant is named and branded for your business and answers in your own words. Sara writes the answers with you and you approve them before launch. Need a change later? Just ask.');
+  insertFaq.run('Contact email phone number speak talk reach sara', 'You can reach Sara at hello.glikify@gmail.com, or leave your name and email here and she\'ll get back to you within one working day.');
+  insertFaq.run('Located location address based derby area where', 'Glikify is based in Derby, UK, and works with small businesses.');
+  insertFaq.run('Start started sign signup interested join book call ready buy', 'Great! Leave your details and Sara will be in touch to get your assistant set up.');
 }
 
 // Seed Stable View cafe (ID 2)
