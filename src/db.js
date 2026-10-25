@@ -53,6 +53,7 @@ db.prepare("UPDATE businesses SET name = 'Glikify', email = 'demo@glikify.com' W
   insertFaq.run('Contract cancel cancellation stop leave tied commitment notice', 'There\'s no contract. You pay monthly and can cancel any time.');
   insertFaq.run('Opening hours open times available reply respond weekend', 'I\'m here 24/7 to answer questions. Sara reads every enquiry and replies within one working day.');
   insertFaq.run('Glikify services offer chatbot chatbots assistant explain help', 'Glikify puts a friendly AI assistant on your website. It answers your customers\' questions in your own words, day or night, and when someone wants a quote or a booking it takes their details and sends them straight to you.');
+  insertFaq.run('Automate automating automation automated admin paperwork tasks jobs time saving save repetitive', 'As well as website assistants, Glikify helps small businesses automate the everyday jobs that eat up their time. Leave your details and tell Sara what you would like to automate, and she will let you know what is possible.');
   insertFaq.run('Technical install code setup set up computer skills difficult easy', 'No technical skills needed. Sara builds your assistant, checks every answer with you and adds it to your website for you. You just read the enquiries that come in.');
   insertFaq.run('Website wordpress wix squarespace shopify site existing compatible', 'It works on most websites. Sara checks yours first and adds it for you, so there\'s nothing for you to do.');
   insertFaq.run('Leads enquiries enquiry details customers customer messages capture missed', 'When a customer wants a quote, a booking or a callback, I take their name and email and send them straight to your inbox, so no enquiry gets missed.');
@@ -186,6 +187,29 @@ if (ppFaqCount === 0) {
   insertPp.run('Can I get a quote? How much will it cost?', 'We would be happy to give you a quote. Pop your name and email below and leave your details, and we will get straight back to you to arrange a free, no-obligation quote for your job.');
   insertPp.run('What areas do you cover? Do you cover Derby?', 'We are based in Derby and cover Derby and the surrounding areas. If you are unsure whether we cover your area, leave your name and email below and we will get straight back to you.');
   insertPp.run('How do I contact you or book? What is your phone number or address?', 'You can call us on 01332 367070, or find us at Pride Place, Caesar Street, Derby DE1 3RU. You can also leave your name and email here and we will get straight back to you.');
+}
+
+// BHG Motor Group demo (ID 10): reloaded on every start
+if (db.prepare('SELECT COUNT(*) AS c FROM businesses WHERE id = 10').get().c === 0) {
+  db.prepare("INSERT INTO businesses (id, name, email, password_hash) VALUES (10, 'BHG Motor Group', 'sales@bhgmotorgroup.co.uk', '')").run();
+}
+db.prepare('DELETE FROM faqs WHERE business_id = 10').run();
+{
+  const insertBhg = db.prepare('INSERT INTO faqs (business_id, question, answer) VALUES (10, ?, ?)');
+  insertBhg.run('Electric electrics hybrid hybrids plug charging cars', 'Yes. We sell and service full electric and hybrid cars, and our technicians are experienced with alternative-fuel vehicles. Leave your details if you\'d like the team to help.');
+  insertBhg.run('Parts part genuine spares sell supply', 'We supply genuine MG and Hyundai parts. Leave your details with your registration and the part you need.');
+  insertBhg.run('Opening hours open times close closing sunday saturday weekend today', 'Both our sites keep the same hours. Sales: Monday to Friday 9am to 7pm, Saturday 9am to 5pm, Sunday 11am to 4pm. Servicing and MOTs: Monday to Friday 8:30am to 6pm, Saturday 8am to 12pm, closed Sunday.');
+  insertBhg.run('Where located location address sites site bushey colney heath albans directions find', 'We have two sites in Hertfordshire. Bushey: 6-10 High Road, Bushey, WD23 1SE. Colney Heath: The Service Station, High Street, Colney Heath, St Albans, AL4 0NU.');
+  insertBhg.run('Contact phone number call email ring telephone speak', 'Bushey: 0208 420 5100. Colney Heath, St Albans: 01727 827000. You can also email sales@bhgmotorgroup.co.uk.');
+  insertBhg.run('Stock available model colour mileage particular specific looking', 'Our stock changes all the time, so the team can tell you what\'s in today. Leave your details and the car you\'re after, and we\'ll get straight back to you.');
+  insertBhg.run('Cars sell used makes brands hyundai kia mitsubishi renault ssangyong kgm buy', 'We sell quality used cars from many makes, especially Hyundai, Kia, MG, KGM, Mitsubishi, Renault and SsangYong. You can browse all our stock on the Used Cars page. Looking for something specific? Leave your details and we\'ll help.');
+  insertBhg.run('Finance monthly payments pcp hire purchase credit loan deposit afford', 'Yes, we offer finance. Bushey Heath Garage Ltd is authorised and regulated by the Financial Conduct Authority (FRN 673830). All finance is subject to status and income. Leave your details and the team will talk you through the options.');
+  insertBhg.run('Part exchange partexchange trade swap worth value valuation', 'You can get a valuation using the Value My Car tool on our website. If you\'d like the team to look at your car, leave your details and your car\'s registration.');
+  insertBhg.run('Service servicing serviced maintenance', 'Yes. We\'re a proud MG franchise, and our factory-trained technicians service MG and Hyundai cars using genuine parts. We also service all other makes. Leave your details and we\'ll get you booked in.');
+  insertBhg.run('Book booking online appointment hyundai', 'Hyundai servicing can be booked online through the Book a Service link on our Aftersales page. Or leave your details and we\'ll book it for you.');
+  insertBhg.run('MOT mots test testing due book booking', 'Yes, we carry out MOTs on all makes of vehicle. Leave your details with your registration and preferred date, and we\'ll get you booked in.');
+  insertBhg.run('Repair repairs fix broken fault problem warning light noise', 'Yes, we carry out repairs on Hyundai, MG and other makes. Leave your details and tell us what\'s wrong, and the team will get back to you.');
+  insertBhg.run('Long years history family business established franchise about', 'BHG Motor Group is a family business with over 50 years of trading, and a proud MG franchise.');
 }
 
 /**

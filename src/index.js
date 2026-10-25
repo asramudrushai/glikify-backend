@@ -81,6 +81,13 @@ app.get('/demo', (req, res) => {
         subtitle: 'Your AI assistant — answering customer questions 24/7',
         q1: 'Do you do emergency callouts?',
         q2: 'Can I get a quote?'
+      },
+      10: {
+        name: 'BHG Motor Group',
+        assistant: 'BHG Assistant',
+        subtitle: 'Your AI assistant — answering customer questions 24/7',
+        q1: 'What are your opening hours?',
+        q2: 'Do you offer finance?'
       }
     };
     const client = clients[businessId];
