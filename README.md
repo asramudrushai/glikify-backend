@@ -1,53 +1,28 @@
-# Replify Backend
+# Glikify Backend
 
-AI-powered customer service chatbot backend for small businesses.
+The chatbot behind [Glikify](https://glikify.com): website assistants for small businesses that answer customer questions 24/7 and send enquiries straight to the business.
 
-## Tech Stack
-- Node.js & Express
-- SQLite (via team-db Turso sync)
-- JWT for authentication
-- Bcryptjs for password hashing
+## What it does
 
-## Directory Structure
-- `src/index.js`: Entry point
-- `src/db.js`: Database utility wrapping `team-db` CLI
-- `src/middleware/auth.js`: JWT authentication middleware
-- `src/routes/`: API route handlers
-- `src/utils/faqMatcher.js`: Simple keyword-based FAQ matching logic
+- Answers customer questions from each business's own FAQ list
+- Captures leads (name and email) when it can't answer or when someone wants to book
+- Emails every lead and saves it to a Google Sheet
+- Runs one assistant per business, each with its own name and branding
 
-## API Endpoints
+## Adding the assistant to a website
 
-### Auth
-- `POST /api/auth/register`: Register a new business
-- `POST /api/auth/login`: Login and receive JWT
+Paste one line before the closing `</body>` tag:
 
-### FAQs (Requires Auth)
-- `GET /api/faqs`: List all FAQs for the business
-- `POST /api/faqs`: Create a new FAQ
-- `DELETE /api/faqs/:id`: Delete an FAQ
+```html
+<script src="https://replify-backend.onrender.com/widget/widget.js" data-business-id="1" data-name="Gilly" data-color="#5B3BFF" defer></script>
+```
 
-### Chat
-- `GET /api/chat/:businessId/answer?question=...`: Get AI response for a question
-- `POST /api/chat/session`: Create a new chat session
+Change `data-business-id`, `data-name` and `data-color` for each business.
 
-### Leads
-- `POST /api/leads`: Capture customer lead (name, email)
-- `GET /api/leads`: Retrieve leads for the business (Requires Auth)
+## Settings
 
-### Business Profile (Requires Auth)
-- `GET /api/business/profile`: Get business profile info
-- `POST /api/business/profile`: Update business profile
+Private settings live in Render's Environment tab, never in this repository:
 
-## Setup & Running
-
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-2. Run the server:
-   ```bash
-   npm start
-   ```
-
-The server binds to `0.0.0.0` and listens on port `3001` by default.
+- `JWT_SECRET`: key for dashboard logins
+- `LEADS_SHEET_URL`: Google Apps Script address that emails and records leads
+- `BASE_URL`: the bot's public address
