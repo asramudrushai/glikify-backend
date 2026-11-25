@@ -8,7 +8,7 @@
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: #f0f2f5;
+            background: #F4F1E8;
             padding: 20px;
             color: #1a1a2e;
         }
@@ -23,8 +23,8 @@
         .logo { display: block; max-width: 260px; margin: 0 auto 24px; }
         .badge {
             display: inline-block;
-            background: #eef2ff;
-            color: #4f46e5;
+            background: #C9E465;
+            color: #22231E;
             font-size: 12px;
             font-weight: 600;
             padding: 4px 12px;
@@ -59,7 +59,7 @@
         .feature p { font-size: 13px; color: #6b7280; }
         .cta {
             margin-top: 24px;
-            background: linear-gradient(135deg, #4f46e5, #7c3aed);
+            background: #22231E;
             color: white;
             padding: 16px 24px;
             border-radius: 10px;
@@ -80,7 +80,7 @@
             width: 60px;
             height: 60px;
             border-radius: 30px;
-            background: #4f46e5;
+            background: #22231E;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
             cursor: pointer;
             display: flex;
@@ -107,7 +107,7 @@
         }
         #replify-chat-window.open { display: flex; }
         #replify-header {
-            background: #4f46e5;
+            background: #22231E;
             color: white;
             padding: 16px;
             display: flex;
@@ -153,7 +153,7 @@
             box-shadow: 0 1px 4px rgba(0,0,0,0.08);
         }
         .replify-msg.user {
-            background: #4f46e5;
+            background: #22231E;
             color: white;
             align-self: flex-end;
             border-bottom-right-radius: 4px;
@@ -174,12 +174,12 @@
             outline: none;
             transition: border-color 0.2s;
         }
-        #replify-input:focus { border-color: #4f46e5; }
+        #replify-input:focus { border-color: #22231E; }
         #replify-send {
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: #4f46e5;
+            background: #22231E;
             border: none;
             cursor: pointer;
             display: flex;
@@ -188,7 +188,7 @@
             transition: background 0.2s;
             flex-shrink: 0;
         }
-        #replify-send:hover { background: #4338ca; }
+        #replify-send:hover { background: #000000; }
         #replify-send svg { fill: white; width: 16px; height: 16px; }
         #replify-lead-form {
             display: none;
@@ -211,11 +211,11 @@
             margin-bottom: 8px;
             outline: none;
         }
-        #replify-lead-form input:focus { border-color: #4f46e5; }
+        #replify-lead-form input:focus { border-color: #22231E; }
         #replify-submit-lead {
             width: 100%;
             padding: 10px;
-            background: #4f46e5;
+            background: #22231E;
             color: white;
             border: none;
             border-radius: 8px;
@@ -224,7 +224,7 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-        #replify-submit-lead:hover { background: #4338ca; }
+        #replify-submit-lead:hover { background: #000000; }
         #replify-skip-lead {
             width: 100%;
             margin-top: 8px;
@@ -235,7 +235,11 @@
             cursor: pointer;
             text-decoration: underline;
         }
-    </style>
+        .gilly-head { width: 40px; height: 40px; display: block; }
+    .gilly-head.small { width: 32px; height: 32px; background: #FBFAF5; border-radius: 8px; padding: 2px; }
+    #replify-toggle { background: #FBFAF5 !important; border: 1px solid #D8D3C3 !important; }
+    .badge { color: #22231E !important; }
+</style>
 </head>
 <body>
     <div class="demo-page">
@@ -245,7 +249,7 @@
         <p class="subtitle">AI-powered customer service chatbot for small businesses</p>
 
         <div class="instructions">
-            <h3>👇 Try the widget now — click the purple bubble below right</h3>
+            <h3>👇 Try the assistant now — click the chat button, bottom right</h3>
             <p>Ask it anything — it answers instantly, 24/7. Try asking:</p>
             <p><code>What are your opening hours?</code> &nbsp;or&nbsp; <code>What services do you offer?</code></p>
             <p>If the bot doesn't have an answer, it will ask for your name and email so the business can follow up.</p>
@@ -271,22 +275,36 @@
         </div>
 
         <div class="cta">
-            <strong>Glikify — £200/month for small businesses</strong>
-            £495 setup — half price for our first 3 founding clients. Includes FAQ training and ongoing support. Try it free for 30 days.
+            <strong>Want one for your business?</strong>
+            Visit <a href="https://glikify.com" style="color:#C9E465">glikify.com</a> or email hello.glikify@gmail.com, and Sara will build you a free demo using your own website.
         </div>
     </div>
 
     <div id="replify-widget-container">
         <button id="replify-toggle" aria-label="Open chat">
-            <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+            <svg class="gilly-head" viewBox="0 0 100 100" aria-hidden="true"><line x1="50" y1="8" x2="50" y2="22" stroke="#C9E465" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="50" cy="8" r="7" fill="#C9E465"/>
+    <path d="M28 20 H72 A22 22 0 0 1 94 42 V60 A22 22 0 0 1 72 82 H70 V95 L56 82 H28 A22 22 0 0 1 6 60 V42 A22 22 0 0 1 28 20 Z" fill="#C9E465"/>
+    <rect x="15" y="29" width="70" height="44" rx="19" fill="#F4F1E8"/>
+    <rect x="19" y="33" width="62" height="36" rx="15" fill="#22231E"/>
+    <rect x="31" y="42" width="8" height="13" rx="4" fill="#F4F1E8"/>
+    <rect x="61" y="42" width="8" height="13" rx="4" fill="#F4F1E8"/>
+    <path d="M44 60 Q50 64.5 56 60" stroke="#C9E465" stroke-width="3.6" fill="none" stroke-linecap="round"/></svg>
         </button>
 
         <div id="replify-chat-window">
             <div id="replify-header">
-                <div>
+                <div style="display:flex;align-items:center;gap:10px"><svg class="gilly-head small" viewBox="0 0 100 100" aria-hidden="true"><line x1="50" y1="8" x2="50" y2="22" stroke="#C9E465" stroke-width="5" stroke-linecap="round"/>
+    <circle cx="50" cy="8" r="7" fill="#C9E465"/>
+    <path d="M28 20 H72 A22 22 0 0 1 94 42 V60 A22 22 0 0 1 72 82 H70 V95 L56 82 H28 A22 22 0 0 1 6 60 V42 A22 22 0 0 1 28 20 Z" fill="#C9E465"/>
+    <rect x="15" y="29" width="70" height="44" rx="19" fill="#F4F1E8"/>
+    <rect x="19" y="33" width="62" height="36" rx="15" fill="#22231E"/>
+    <rect x="31" y="42" width="8" height="13" rx="4" fill="#F4F1E8"/>
+    <rect x="61" y="42" width="8" height="13" rx="4" fill="#F4F1E8"/>
+    <path d="M44 60 Q50 64.5 56 60" stroke="#C9E465" stroke-width="3.6" fill="none" stroke-linecap="round"/></svg><div>
                     <h3>Glikify Assistant</h3>
                     <span>Typically replies instantly</span>
-                </div>
+                </div></div>
                 <button id="replify-close" aria-label="Close">
                     <svg viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
                 </button>
